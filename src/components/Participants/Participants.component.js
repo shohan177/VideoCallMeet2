@@ -5,6 +5,7 @@ import { Participant } from "./Participant/Participant.component";
 
 const Participants = (props) => {
   const videoRef = useRef(null);
+  console.log(videoRef);
   let participantKey = Object.keys(props.participants);
   useEffect(() => {
     if (videoRef.current) {
@@ -77,8 +78,8 @@ const Participants = (props) => {
       //   "--grid-col-size": gridColSize,
       //   "--grid-row-size": gridRowSize,
       // }}
-      style={{ display:'flex' }}
-      className={`participants`}
+      // style={{ display:'flex' }}
+      //className={`participants`}
     >
       
 
@@ -86,15 +87,18 @@ const Participants = (props) => {
  
 
 
-      <Participant
+      {/* */}
+      <div className="vedio-container">
+        <div className="flex-item-video ">
+        <Participant
         currentParticipant={currentUser}
         curentIndex={participantKey.length}
         hideVideo={screenPresenter && !currentUser.screen}
         videoRef={videoRef}
         showAvatar={currentUser && !currentUser.video && !currentUser.screen}
         currentUser={true}
-      />
-     <div style={{ width:'35%',height:'200px'}}>
+      /> 
+        </div>
    {participants}
    </div>
 

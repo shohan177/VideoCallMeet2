@@ -1,68 +1,89 @@
+.video {
+  background-color: #353b48;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  object-fit: cover;
+  border-radius: 5px;
+}
 
+.participant {
+  background-color: #353b48;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border-radius: 5px;
+  min-height: 200px;
+}
 
-  .video{
-    background-color: #353b48;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    object-fit: cover;
-    border-radius: 5px;
-  }
+.muted {
+  color: #fff;
+  right: 10px;
+  position: absolute;
+  top: 10px;
+  background: #353b48;
+  border-radius: 50%;
+  height: 22px;
+  width: 22px !important;
+}
 
+.hide {
+  display: none;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  font-size: 150px;
+  font-family: roboto, arial;
+  color: white;
+  text-align: center;
+  background: orange;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.name {
+  color: white;
+  bottom: 10px;
+  position: absolute;
+  left: 20px;
+}
+
+@media (max-width: 800px) {
   .participant {
-    background-color: #353b48;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    border-radius: 5px;
-    min-height: 200px
+    min-height: 0px;
   }
-
-  .muted {
-    color: #fff;
-    right: 10px;
-    position: absolute;
-    top: 10px;
-    background: #353b48;
-    border-radius: 50%;
-    height: 22px;
-    width: 22px!important;
-  }
-
-  .hide {
-    display: none;
-  }
-
   .avatar {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    font-size: 150px;
-    font-family: roboto, arial;
-    color: white;
-    text-align: center;
-    background: orange;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
   }
+}
 
-  .name {
-    color: white;
-    bottom: 10px;
-    position: absolute;
-    left: 20px;
-  }
+.star_vedio {
+  width: 70% !important;
+}
 
-  @media (max-width: 800px) {
-    .participant{
-      min-height: 0px;
-    }
-    .avatar {
-      width: 80px;
-      height: 80px;
-      font-size: 50px;
-    }
-  }
+.vedio-container {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.flex-item-video {
+  height: 250px;
+  width: 250px;
+  display: grid;
+}
+
+.flex-item-video-star {
+  width: 70%;
+  height: 90vh;
+  float: left;
+  order: 3;
+}

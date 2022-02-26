@@ -15,7 +15,7 @@ export const Participant = (props) => {
   } = props;
   if (!currentParticipant) return <></>;
   return (
-    <div className={`participant ${hideVideo ? "hide" : ""}`}>
+    <div className={`${currentParticipant.name === "shakib"? `${currentUser?'flex-item-video':'flex-item-video-star'}` :"flex-item-video"}`} >
       <Card>
         <video
           ref={videoRef}
