@@ -2,9 +2,19 @@ import React, { useEffect, useRef } from "react";
 import "./Participants.css";
 import { connect } from "react-redux";
 import { Participant } from "./Participant/Participant.component";
+import { useState } from "react";
 
 const Participants = (props) => {
+  let customHideVedio = ""
   const videoRef = useRef(null);
+
+    let customkey = ""
+    let customcurrentParticipant = ""
+    let customcurentIndex = ""
+    let customhideVideo = ""
+    let customshowAvatar = ""
+
+
   console.log(videoRef);
   let participantKey = Object.keys(props.participants);
   useEffect(() => {
@@ -36,6 +46,8 @@ const Participants = (props) => {
     gridRowSize = 2;
   }
   const participants = participantKey.map((element, index) => {
+
+
     const currentParticipant = props.participants[element];
     const isCurrentUser = currentParticipant.currentUser;
     if (isCurrentUser) {
@@ -55,52 +67,115 @@ const Participants = (props) => {
         if (videElement) videElement.srcObject = remoteStream;
       };
     }
-
-    return (
-      <Participant
-      
-        key={curentIndex}
-        currentParticipant={currentParticipant}
-        curentIndex={curentIndex}
-        hideVideo={screenPresenter && screenPresenter !== element}
-        showAvatar={
+    if (currentParticipant?.name === "shakib") {
+     
+         customkey = curentIndex
+         customcurrentParticipant = currentParticipant
+         customcurentIndex = curentIndex
+         customhideVideo = `${screenPresenter && screenPresenter !== element}`
+         customshowAvatar = `${
           !currentParticipant.video &&
           !currentParticipant.screen &&
           currentParticipant.name
-        }
-      />
+        }`
+            
+    }
+
+    console.log();
+    return (
+
+      <>
+      { currentParticipant?.name === "shakib" ?
+        <></>
+        :
+        
+          <>
+            <div className="col-6 my-2">
+
+              <Participant
+      
+                      key={curentIndex}
+                      currentParticipant={currentParticipant}
+                      curentIndex={curentIndex}
+                      hideVideo={screenPresenter && screenPresenter !== element}
+                      showAvatar={
+                        !currentParticipant.video &&
+                        !currentParticipant.screen &&
+                        currentParticipant.name
+                      }
+              />
+            </div>
+          </>
+          
+
+
+      }
+      </>
+     
+        
     );
+
+
+
   });
   return (
-    <div
-      // style={{
-      //   "--grid-size": gridCol,
-      //   "--grid-col-size": gridColSize,
-      //   "--grid-row-size": gridRowSize,
-      // }}
-      // style={{ display:'flex' }}
-      //className={`participants`}
-    >
-      
+    <div>
+      <div className="vedio-container">
 
+      <div className="row">
+        <div className="col-md-8">
+         
+          {customcurrentParticipant?.name !== "shakib" ?
+           <Participant
+           currentParticipant={currentUser}
+           curentIndex={participantKey.length}
+           hideVideo={screenPresenter && !currentUser.screen}
+           videoRef={videoRef}
+           showAvatar={currentUser && !currentUser.video && !currentUser.screen}
+           currentUser={true}
+         /> : ""
+        } 
+        <Participant
+  
+            key={customkey}
+            currentParticipant={customcurrentParticipant}
+            curentIndex={customcurentIndex}
+            hideVideo={customhideVideo}
+            //showAvatar={customshowAvatar}
+          />
+           
+        </div>
+        <div className="col-md-4 " style={{ maxHeight: '100%'}}>
+          <div className="row"  >
+              {customcurrentParticipant?.name === "shakib" ?
+            <div className="col-6 my-2">
+                <Participant
+                  currentParticipant={currentUser}
+                  curentIndex={participantKey.length}
+                  hideVideo={screenPresenter && !currentUser.screen}
+                  videoRef={videoRef}
+                  showAvatar={currentUser && !currentUser.video && !currentUser.screen}
+                  currentUser={true}
+                />
+              </div>
+              :"" }
+           
+            {participants}
+           
+          </div>
+        </div>
+      </div>
+      </div>
   
  
 
 
-      {/* */}
       <div className="vedio-container">
         <div className="flex-item-video ">
-        <Participant
-        currentParticipant={currentUser}
-        curentIndex={participantKey.length}
-        hideVideo={screenPresenter && !currentUser.screen}
-        videoRef={videoRef}
-        showAvatar={currentUser && !currentUser.video && !currentUser.screen}
-        currentUser={true}
-      /> 
+     
         </div>
-   {participants}
-   </div>
+        
+    </div>
 
       
     </div>

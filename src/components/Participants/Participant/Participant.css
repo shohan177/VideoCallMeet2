@@ -32,10 +32,10 @@
 }
 
 .avatar {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  font-size: 150px;
+  font-size: 40px;
   font-family: roboto, arial;
   color: white;
   text-align: center;
@@ -65,7 +65,7 @@
   }
 }
 
-.star_vedio {
+/* .star_vedio {
   width: 70% !important;
 }
 
@@ -86,4 +86,12 @@
   height: 90vh;
   float: left;
   order: 3;
+} */
+
+.perticipent-row {
+  display: none;
+}
+
+.vedio-container {
+  height: 100px !important;
 }
